@@ -3,13 +3,27 @@
   <head>
     <title>Mad for Mondrian!</title>
     <script src="scripts.js"></script>
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
   </head>
   
   <body>  
     <div class="title_container">
       <h1>This is a Mondrian.  Click on stuff and things happen!</h1>
+      <h3 id="currentMondrian">new Mondrian</h3>
     </div>
+    
+    <div class="form_container">
+      <button id="save_button">Save your Mondrian!</button>
+      <form id="load_form">
+        <select name="id">
+        <% @mondrians.each do |mondrian| %>
+          <option value="<%=mondrian.id%>"><%=mondrian.name%></option>
+        <% end %>
+        </select>
+        <input type="submit" value="Load Mondrian">
+      </form>
+    </div>
+    <!--form_container -->
     
     <div id="workspace">
       <div id="color_palette">
