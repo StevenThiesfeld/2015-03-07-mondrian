@@ -1,15 +1,15 @@
-require "pry"
-require "sqlite3"
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+require 'active_support/inflector'
 DATABASE = SQLite3::Database.new("mondrian-storage.db")
 require_relative "database/database_setup"
-require "active_support/inflector"
-require "sinatra"
-require "json"
+
 require_relative "models/model_db_methods"
 require_relative "models/mondrian"
 
 
-
+binding.pry
 get "/" do 
   @mondrians = Mondrian.all
   erb :"mondrian"
