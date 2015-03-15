@@ -1,3 +1,6 @@
-DATABASE.results_as_hash = true
-
-DATABASE.execute("CREATE TABLE IF NOT EXISTS mondrians (id INTEGER PRIMARY KEY, name TEXT, box_colors TEXT)")
+unless ActiveRecord::Base.connection.table_exists?(:mondrians)
+  ActiveRecord::Base.connection.create_table :mondrians do |t|
+    t.text :name
+    t.text :box_colors
+  end
+end

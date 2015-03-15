@@ -31,10 +31,10 @@ var savePainting = function(){
   var request = new XMLHttpRequest();
   var form = new FormData();
   if (currentMondrian === ""){
-  request.open("post", "http://127.0.0.1:4567/new");
+  request.open("post", document.URL + "/new");
   form.append("name", prompt("Enter Mondrian Name"));
   }else{
-    request.open("post", "http://127.0.0.1:4567/save");
+    request.open("post", document.URL + "/save");
     form.append("id", currentMondrian.id);
   }
   form.append("box_colors", setBox_colors()); 
@@ -48,7 +48,7 @@ var loadMondrian = function(event){
   event.preventDefault();
   console.log("hello from loadMondrian");
   var request = new XMLHttpRequest();
-  request.open("post", "http://127.0.0.1:4567/load");
+  request.open("post", document.URL + "/load");
   request.send(new FormData(this));
   request.addEventListener("load", mondrianLoaded);
 }
